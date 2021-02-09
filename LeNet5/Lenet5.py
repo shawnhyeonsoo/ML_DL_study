@@ -17,17 +17,21 @@ test_images = tf.pad(test_images, [[0,0],[2,2],[2,2],[0,0]], mode= 'CONSTANT').n
 train_images, test_images = train_images / 255.0, test_images / 255.0
 model = models.Sequential()
 
-model.add(layers.Conv2D(filters=6, kernel_size=(3, 3), activation='relu', input_shape=(32,32,1)))
+model.add(layers.Conv2D(filters=6, kernel_size=(5, 5), strides = 1, activation='sigmoid', input_shape=(32,32,1)))
 model.add(layers.AveragePooling2D())
 
-model.add(layers.Conv2D(filters=16, kernel_size=(3, 3), activation='relu'))
+model.add(layers.Conv2D(filters=16, kernel_size=(5, 5), strides = 1, activation='tanh'))
 model.add(layers.AveragePooling2D())
+
+#
+
+model.add(layers.Conv2D(filters=120, kernel_size=(5,5), strides = 1, activation='tanh', padding = 'valid'))
 
 model.add(layers.Flatten())
 
-model.add(layers.Dense(units=120, activation='relu'))
+#model.add(layers.Dense(units=120, activation='relu'))
 
-model.add(layers.Dense(units=84, activation='relu'))
+model.add(layers.Dense(units=84, activation='tanh'))
 
 model.add(layers.Dense(units=10, activation = 'softmax'))
 model.compile(optimizer='adam',
