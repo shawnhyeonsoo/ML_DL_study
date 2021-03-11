@@ -5,4 +5,5 @@ Comparison with typical CNN on MNIST Dataset:
 | MODEL | Accuracy |
 |------|-------|
 | CNN | 99.17|
-| RNN | 98.77 |
+| ResNet | 98.77 |
+| ResNet | 99.12 |
